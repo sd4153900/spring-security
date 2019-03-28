@@ -59,9 +59,9 @@ INSERT  INTO permission_role VALUES ('2','4');
 CREATE TABLE user_role
 (
   uid INT(11) NOT NULL,
-  pid INT(11) NOT NULL,
+  rid INT(11) NOT NULL,
   KEY idx_rid (uid),
-  KEY idx_pid (pid)
+  KEY idx_pid (rid)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 

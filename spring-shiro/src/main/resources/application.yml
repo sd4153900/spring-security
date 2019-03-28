@@ -1,11 +1,16 @@
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource #数据库池
-    driver-class-name: com.mysql.jdbc.Driver #数据库驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动
     url: jdbc:mysql://172.16.3.197:3306/study_shiro?characterEncoding=UTF-8 #数据库地址
     username: root #数据库账号
     password: Daohaode@4 #数据库密码
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .jsp
 
 mybatis:
   mapper-locations: mapper/*.xml
   type-aliases-package: com.study.springshiro.model
+

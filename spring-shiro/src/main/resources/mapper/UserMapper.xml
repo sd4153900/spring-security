@@ -8,16 +8,22 @@
         <result property="password" column="password"/>
         <collection property="roles" ofType="com.study.springshiro.model.Role">
             <id property="rid" column="rid"/>
-            <result property="name" column="name"/>
+            <result property="name" column="rname"/>
             <collection property="permissions" ofType="com.study.springshiro.model.Permission">
                 <id property="pid" column="pid"/>
-                <result property="name" column="name"/>
+                <result property="name" column="pname"/>
                 <result property="url" column="url"/>
             </collection>
         </collection>
     </resultMap>
 
     <select id="getByUsername" parameterType="string" resultMap="userMap">
-
+        SELECT *
+        FROM user u
+                 INNER JOIN user_role ur ON ur.uid = u.uid
+                 INNER JOIN role r ON r.rid = ur.rid
+                 INNER JOIN permission_role pr ON pr.rid = r.rid
+                 INNER JOIN permission p ON p.pid = pr.pid
+        WHERE u.username = #{username}
     </select>
 </mapper>
