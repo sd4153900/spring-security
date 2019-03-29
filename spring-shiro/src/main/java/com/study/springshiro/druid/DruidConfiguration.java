@@ -1,6 +1,5 @@
 package com.study.springshiro.druid;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -10,17 +9,17 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 
 import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@Configuration
+/**
+ * 使用新版druid包，无需配置此文件
+ */
 public class DruidConfiguration {
 
     @Bean
@@ -60,8 +59,8 @@ public class DruidConfiguration {
     @Primary
     @ConfigurationProperties(prefix = "spring.datasource")//可以在application.yml中直接获取
     public DataSource dataSource() throws SQLException {
-        DataSource dataSource = DataSourceBuilder.create().type(com.alibaba.druid.pool.DruidDataSource.class).build();
-        ((DruidDataSource) dataSource).addFilters("stat,wall");
+//        DataSource dataSource = DataSourceBuilder.create().type(com.alibaba.druid.pool.DruidDataSource.class).build();
+//        ((DruidDataSource) dataSource).addFilters("stat,wall");
         return DataSourceBuilder.create().type(com.alibaba.druid.pool.DruidDataSource.class).build();
     }
 
