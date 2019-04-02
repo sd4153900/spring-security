@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource #数据库池
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动
+    url: jdbc:mysql://localhost:3306/sys?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8 #数据库地址
+    username: dba #数据库账号
+    password: dba #数据库密码
+    druid:
+      web-stat-filter:
+        enabled: true
+        url-pattern: "/*"
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        # 配置DruidStatViewServlet
+      stat-view-servlet:
+        url-pattern: "/druid/*"
+        # IP白名单(没有配置或者为空，则允许所有访问)
+        allow: 127.0.0.1,192.168.163.1
+        # IP黑名单 (存在共同时，deny优先于allow)
+        deny: 192.168.1.73
+        #  禁用HTML页面上的“Reset All”功能
+        reset-enable: false
+        # 登录名
+        login-username: admin
+        # 登录密码
+        login-password: 123456
