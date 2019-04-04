@@ -3,4 +3,8 @@ server:
 
 spring:
   profiles:
-    include: service
+    include: service,dev
+
+logging:
+  config: classpath:conf/logback-spring.xml
+  path: D:/log/permission
