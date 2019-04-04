@@ -11,7 +11,6 @@ import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.study.permission.model.entity.BaseEntity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
