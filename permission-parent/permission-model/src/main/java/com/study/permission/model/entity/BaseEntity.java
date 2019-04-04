@@ -19,12 +19,12 @@ public class BaseEntity implements Serializable {
     private int id;
 
     @TableField(value = "operator")
-    private String creator;
+    private String operator;
 
     @TableField(value = "operator_time")
-    private LocalDateTime creatorTime;
+    private LocalDateTime operatorTime;
 
     @TableField(value = "operator_ip")
-    private String creatorIp;
+    private String operatorIp;
 
 }

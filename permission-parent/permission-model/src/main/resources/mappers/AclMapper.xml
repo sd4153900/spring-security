@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.permission.model.mapper.AclMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.study.permission.model.entity.AclEntity">
+    <result column="id" property="id" />
+    <result column="operator" property="operator" />
+    <result column="operator_time" property="operatorTime" />
+    <result column="operator_ip" property="operatorIp" />
+        <result column="code" property="code" />
+        <result column="name" property="name" />
+        <result column="acl_model_id" property="aclModelId" />
+        <result column="url" property="url" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="seq" property="seq" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+</mapper>
