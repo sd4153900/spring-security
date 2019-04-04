@@ -7,10 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author caad
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value="/", tags="测试接口模块")
 @Slf4j
 @RestController
+@RequestMapping(value = "/api")
 public class TestController {
 
 
@@ -27,8 +25,19 @@ public class TestController {
 
     @ApiOperation(value="测试接口", notes = "测试接口")
     @GetMapping("/test")
-    public UserEntity test(@ApiParam(name = "id") @RequestParam int id){
+    public UserEntity test(@ApiParam(name = "id",example = "1") @RequestParam int id){
         log.info("log 测试");
-        return userService.get(id);
+        UserEntity userEntity = userService.get(id);
+//        log.info(userEntity.getOperatorTime().toString());
+        return userEntity;
+    }
+
+    @ApiOperation(value="测试接口2", notes = "测试接口2")
+    @PostMapping("/test2")
+    public UserEntity test2(@ApiParam(name = "userEntity") @RequestBody UserEntity userEntity){
+        log.info("log 测试");
+        //UserEntity userEntity = userService.get(id);
+//        log.info(userEntity.getOperatorTime().toString());
+        return userEntity;
     }
 }
