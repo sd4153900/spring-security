@@ -1,7 +1,9 @@
 package com.study.permission.web.controller;
 
 import com.study.permission.model.entity.UserEntity;
+import com.study.permission.model.enums.HttpCode;
 import com.study.permission.service.service.UserService;
+import com.study.permission.web.exception.WebException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -27,6 +29,9 @@ public class TestController {
     @GetMapping("/test")
     public UserEntity test(@ApiParam(name = "id",example = "1") @RequestParam int id){
         log.info("log 测试");
+        if(id == 0){
+            throw new WebException(HttpCode.FAIL,"参数错误");
+        }
         UserEntity userEntity = userService.get(id);
 //        log.info(userEntity.getOperatorTime().toString());
         return userEntity;

@@ -5,6 +5,7 @@ spring:
     url: jdbc:mysql://172.16.3.197:3306/study_sys?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8 #数据库地址
     username: root #数据库账号
     password: Daohaode@4 #数据库密码
+
     druid:
       web-stat-filter:
         enabled: true
@@ -23,6 +24,8 @@ spring:
         login-username: admin
         # 登录密码
         login-password: 123456
+  profiles:
+    active: local
 
 ####################################################### mybatis-plus配置 ##############################################
 mybatis-plus:
@@ -32,3 +35,11 @@ mybatis-plus:
     sql-parser-cache: true #是否缓存 Sql 解析
     db-config:
       id-type: auto #id类型
+#############################################本地配置######################################################
+---
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/study_sys?useUnicode=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8 #数据库地址
+    username: dba #数据库账号
+    password: dba #数据库密码
