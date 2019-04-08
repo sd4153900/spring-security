@@ -29,6 +29,7 @@ public class TestController {
     @GetMapping("/test")
     public UserEntity test(@ApiParam(name = "id",example = "1") @RequestParam int id){
         log.info("log 测试");
+//        int aa = 2/id;
         if(id == 0){
             throw new WebException(HttpCode.FAIL,"参数错误");
         }
