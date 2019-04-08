@@ -1,0 +1,10 @@
+spring:
+  jackson:
+    default-property-inclusion: non_empty
+    deserialization:
+      #允许对象忽略json中不存在的属性
+      fail_on_unknown_properties: false
+    serialization:
+      #忽略无法转换的对象
+      fail_on_empty_beans: false
+      WRITE_DATES_AS_TIMESTAMPS: false
