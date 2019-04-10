@@ -53,7 +53,7 @@ public class MyWebConfig extends WebMvcConfigurationSupport {
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(myInterceptor)
                 //addPathPatterns 用于添加拦截规则
-                .addPathPatterns("/api/**");
+                .addPathPatterns("/sys/**");
                 //excludePathPatterns 用于排除拦截
 
         super.addInterceptors(registry);

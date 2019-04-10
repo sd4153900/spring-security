@@ -1,5 +1,6 @@
 package com.study.permission.web.interceptor;
 
+import com.study.permission.common.utils.JackJsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -7,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * @author caad
@@ -18,7 +20,9 @@ public class MyInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("preHandle start");
+        String url = request.getRequestURI();
+        Map<String,String[]> param = request.getParameterMap();
+        log.info("url:{} ,param:{}",url, JackJsonUtil.toJson(param));
         return true;
     }
 

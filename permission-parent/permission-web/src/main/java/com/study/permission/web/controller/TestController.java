@@ -1,9 +1,10 @@
 package com.study.permission.web.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.study.permission.common.json.JackJsonUtil;
+import com.study.permission.common.utils.JackJsonUtil;
+import com.study.permission.common.utils.SpringContextUtil;
 import com.study.permission.model.entity.UserEntity;
 import com.study.permission.model.enums.HttpCode;
+import com.study.permission.service.common.RedisService;
 import com.study.permission.service.service.UserService;
 import com.study.permission.web.exception.WebException;
 import io.swagger.annotations.Api;
@@ -26,12 +27,14 @@ import java.io.IOException;
 @Api(value="/", tags="测试接口模块")
 @Slf4j
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/sys/test")
 public class TestController {
 
 
     @Autowired
     UserService userService;
+    @Autowired
+    private RedisService redisService;
 
     @ApiOperation(value="测试接口", notes = "测试接口")
     @GetMapping("/test")
@@ -57,4 +60,26 @@ public class TestController {
 //        log.info(userEntity.getOperatorTime().toString());
         return userEntity;
     }
+
+    @ApiOperation(value="测试接口", notes = "测试接口")
+    @GetMapping("/test3")
+    public UserEntity test3(@ApiParam(name = "id",example = "1") @Min (1)@RequestParam int id) throws IOException {
+
+        UserEntity userEntity = SpringContextUtil.getBean(UserService.class).get(id);
+
+//        log.info(userEntity.getOperatorTime().toString());
+        return userEntity;
+    }
+
+    @ApiOperation(value="redis测试接口", notes = "redis测试接口")
+    @GetMapping("/test4")
+    public UserEntity test4() throws IOException {
+
+        UserEntity userEntity = userService.get(1);
+        redisService.hashPut("test","user",userEntity);
+        userEntity = (UserEntity) redisService.hashGet("test","user");
+//        log.info(userEntity.getOperatorTime().toString());
+        return userEntity;
+    }
+
 }

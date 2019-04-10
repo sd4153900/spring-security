@@ -1,9 +1,11 @@
-package com.study.permission.common.json;
+package com.study.permission.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.io.IOException;
  * @author caad
  * @date: Create in 17:13 2019/4/8
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JackJsonUtil {
 
     private static ObjectMapper objectMapper = new ObjectMapper();

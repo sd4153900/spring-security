@@ -12,6 +12,10 @@ public class ResultFactory {
         return new HttpResult<>(HttpCode.SUCCESS,data);
     }
 
+    public static <T> HttpResult<T> ok(){
+        return new HttpResult<>(HttpCode.SUCCESS,null);
+    }
+
     public static <T> HttpResult<T> error(T data){
         return new HttpResult<>(HttpCode.ERROR,data);
     }

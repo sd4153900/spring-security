@@ -16,19 +16,21 @@ import java.util.List;
  */
 public interface BaseService<T extends BaseEntity> extends IService<T> {
 
-    T get(Serializable id);
+    T get(Integer id);
 
     T get(Wrapper<T> wrapper) throws Exception;
 
-    List<T> getList(Collection<? extends Serializable> idList);
+    List<T> getList(Collection<Integer> idList);
 
     List<T> getList(Wrapper<T> wrapper);
+
+    List<T> getAll();
 
     IPage<T> getPage(PageBuilder pageBuilder);
 
     IPage<T> getPage(PageBuilder pageBuilder, Wrapper<T> wrapper);
 
-//    T save(T entity);
+    T saveOne(T entity);
 
 
 

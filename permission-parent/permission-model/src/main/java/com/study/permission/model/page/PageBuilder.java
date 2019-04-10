@@ -1,11 +1,9 @@
 package com.study.permission.model.page;
 
-import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.util.ArrayUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
+import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,8 +20,8 @@ public class PageBuilder {
     public PageBuilder() {
         index = 1;
         size = 20;
-        ascs = CollectionUtil.newArrayList();
-        descs = CollectionUtil.newArrayList();
+        ascs = Lists.newArrayList();
+        descs = Lists.newArrayList();
     }
 
     public PageBuilder(PageForm pageForm) {
@@ -56,10 +54,10 @@ public class PageBuilder {
 
     public <T>Page<T> builder(){
         Page<T> page = new Page<>(index,size);
-        if(CollectionUtil.isNotEmpty(ascs)){
+        if(CollectionUtils.isNotEmpty(ascs)){
             page.setAscs(ascs);
         }
-        if(CollectionUtil.isNotEmpty(descs)){
+        if(CollectionUtils.isNotEmpty(descs)){
             page.setDescs(descs);
         }
         return page;

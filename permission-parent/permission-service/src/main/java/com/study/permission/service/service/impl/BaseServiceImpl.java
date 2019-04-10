@@ -9,6 +9,7 @@ import com.study.permission.model.page.PageBuilder;
 import com.study.permission.service.service.BaseService;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class BaseServiceImpl<M extends BaseMapper<T>,T extends BaseEntity> extends ServiceImpl<M,T> implements BaseService<T> {
     @Override
-    public T get(Serializable id) {
+    public T get(Integer id) {
         return getById(id);
     }
 
@@ -28,13 +29,18 @@ public class BaseServiceImpl<M extends BaseMapper<T>,T extends BaseEntity> exten
     }
 
     @Override
-    public List<T> getList(Collection<? extends Serializable> idList) {
+    public List<T> getList(Collection<Integer> idList) {
         return (List<T>) listByIds(idList);
     }
 
     @Override
     public List<T> getList(Wrapper<T> wrapper) {
         return list(wrapper);
+    }
+
+    @Override
+    public List<T> getAll() {
+        return list();
     }
 
     @Override
@@ -45,5 +51,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>,T extends BaseEntity> exten
     @Override
     public IPage<T> getPage(PageBuilder pageBuilder, Wrapper<T> wrapper) {
         return page(pageBuilder.builder(),wrapper);
+    }
+
+    @Override
+    public T saveOne(T entity) {
+        entity.setOperator("system");
+        entity.setOperatorIp("172.0.0.1");
+        entity.setOperatorTime(LocalDateTime.now());
+        save(entity);
+        return entity;
     }
 }

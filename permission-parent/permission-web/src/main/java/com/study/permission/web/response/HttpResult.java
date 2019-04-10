@@ -19,4 +19,12 @@ public class HttpResult<T> {
         this.message = httpCode.getMessage();
         this.data = data;
     }
+
+    public static <T> HttpResult<T> ok(T data){
+        return new HttpResult<>(HttpCode.SUCCESS,data);
+    }
+
+    public static <T> HttpResult<T> error(T data){
+        return new HttpResult<>(HttpCode.ERROR,data);
+    }
 }

@@ -2,8 +2,7 @@ package com.study.permission.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -15,6 +14,9 @@ import lombok.experimental.Accessors;
  * @since 2019-04-04
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("sys_dept")
